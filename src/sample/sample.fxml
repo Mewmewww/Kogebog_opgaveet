@@ -180,7 +180,7 @@
                </children></AnchorPane>
         </content>
       </Tab>
-      <Tab fx:id="Logs" text="Logs">
+      <Tab fx:id="Logs" onSelectionChanged="#setLogsButtonOnAction" text="Logs">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -209,8 +209,8 @@
                   </HBox>
                   <ButtonBar layoutX="-1.0" layoutY="83.0" prefHeight="40.0" prefWidth="729.0">
                     <buttons>
-                        <Button fx:id="soupSave" mnemonicParsing="false" onAction="#logs" text="Soup" />
-                        <Button fx:id="steakSave" mnemonicParsing="false" onAction="#logs" text="Steak" />
+                        <Button fx:id="soupSave" mnemonicParsing="false" text="Soup" />
+                        <Button fx:id="steakSave" mnemonicParsing="false" text="Steak" />
                         <Button fx:id="burgerSave" mnemonicParsing="false" text="Burger" />
                         <Button fx:id="lasagnaSave" mnemonicParsing="false" text="Lasagna" />
                         <Button fx:id="riceSave" mnemonicParsing="false" text="Rice" />
