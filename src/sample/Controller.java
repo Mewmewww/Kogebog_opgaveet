@@ -14,7 +14,7 @@ public class Controller extends Calculator {
     public void setOpskrift(Tab opskrift) {
         Opskrift = opskrift;
     }
-
+    //<editor-fold-desc = "FXML-List">
     @FXML
     Tab Opskrift;
     @FXML
@@ -23,6 +23,8 @@ public class Controller extends Calculator {
     Tab Kogebog;
     @FXML
     Tab Introduktion;
+    @FXML
+    Tab NutritionsValues;
     @FXML
     TabPane tabPane;
     @FXML
@@ -68,9 +70,21 @@ public class Controller extends Calculator {
     Button buttonDivide;
     @FXML
     Button buttonMultiply;
-
-    ArrayList<String> readLines = new ArrayList<String>();
-    // TODO: Add an arbitrary recipe/ingredientslist from google at last.
+    @FXML
+    TextArea nutritionValues;
+    @FXML
+    Button nutritionBurger;
+    @FXML
+    Button nutritionSoup;
+    @FXML
+    Button nutritionLasagna;
+    @FXML
+    Button nutritionSteak;
+    @FXML
+    Button nutritionChicken;
+    @FXML
+    Button nutritionRice;
+    //</editor-fold>
 
     public void chickenTransfer() {
         FriedChicken.clear();
@@ -269,6 +283,7 @@ public class Controller extends Calculator {
             logsSave.setOpacity(1);
         }
     }
+
     // Just a quick randomizedDish that if the user is incapable of chosing a dish on their own, they may
     // be offered a randomized one with a switch-case
     public void randomizeDish() {
@@ -299,5 +314,34 @@ public class Controller extends Calculator {
             default -> {
             }
         }
+    }
+
+    public void setOnButtonIndhold() {
+        /* Kunne også anvende klassevariabler for at opfylde opgave-kravet, men jeg synes at klassevariabler
+        passer ret elendigt ind i min udvalgte kogebog.
+        */
+        nutritionBurger.setOnAction(e -> {
+            naeringsIndhold(10, 10, 10);
+        });
+        nutritionLasagna.setOnAction(e -> {
+            naeringsIndhold(500, 30, 100);
+        });
+        nutritionSoup.setOnAction(e -> {
+            naeringsIndhold(130, 12, 200);
+        });
+        nutritionRice.setOnAction(e -> {
+            naeringsIndhold(160, 12, 105);
+        });
+        nutritionSteak.setOnAction(e -> {
+            naeringsIndhold(200, 50, 90);
+        });
+        nutritionChicken.setOnAction(e -> {
+            naeringsIndhold(500, 20, 12);
+        });
+    }
+
+    public void naeringsIndhold(int Calories, int Salt, int Protein) {
+        nutritionValues.clear();
+        nutritionValues.appendText("Calories: " + Calories + "\nSalt: " + Salt + "\nProtein: " + Protein);
     }
 }

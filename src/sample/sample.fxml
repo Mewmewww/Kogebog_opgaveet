@@ -30,7 +30,7 @@
                                 <Image url="@277d0884459d4058ab67c99865164f27.gif" />
                             </image>
                         </ImageView>
-                        <TextArea editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="251.0" text="Velkommen til kogebogen. I starter ved kogebog-tabben, som vil give jer en liste af mulige opskrifter i kan søge nærmere ved. Opskrift-tabben kan kun tilgås, når man vælger en opskrift fra kogebog-tabben.&#10;Logs-tabben noterer ned hvilke opskrifter i er interesseret i.&#10;Calculator-tabben lader jer bruge en lommeregner, som kan hjælpe med udregning. " wrapText="true">
+                        <TextArea editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="251.0" text="Velkommen til kogebogen. I starter ved kogebog-tabben, som vil give jer en liste af mulige opskrifter i kan søge nærmere ved. Opskrift-tabben kan kun tilgås, når man vælger en opskrift fra kogebog-tabben.&#10;Logs-tabben noterer ned hvilke opskrifter i er interesseret i.&#10;Lommeregner lader jer bruge en lommeregner, som kan hjælpe med udregning. &#10;Randomize - lad os vælge for dig.&#10;Nutritionsvalues - se hvad vores opskrifter indeholder" wrapText="true">
                            <font>
                               <Font size="17.0" />
                            </font>
@@ -188,7 +188,7 @@
                      <children>
                         <HBox prefHeight="81.0" prefWidth="839.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Logs - save recipes here" translateX="250.0">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Logs - save recipes here" translateX="200.0">
                                  <font>
                                     <Font size="29.0" />
                                  </font>
@@ -247,7 +247,7 @@
                      <children>
                         <HBox prefHeight="349.0" prefWidth="729.0">
                            <children>
-                              <TextArea maxHeight="-Infinity" prefHeight="136.0" prefWidth="193.0" text="Press the giant button to &#10;get a random dish chosen for you&#10;" translateX="270.0" wrapText="true" />
+                              <TextArea editable="false" maxHeight="-Infinity" prefHeight="136.0" prefWidth="193.0" text="Press the giant button to &#10;get a random dish chosen for you&#10;" translateX="270.0" wrapText="true" />
                               <Button fx:id="randomizeDish" mnemonicParsing="false" onAction="#randomizeDish" prefHeight="199.0" prefWidth="370.0" text="Button" textAlignment="CENTER" textFill="#ff0606" translateY="150.0">
                                  <font>
                                     <Font size="22.0" />
@@ -373,6 +373,42 @@
                </children>
             </AnchorPane>
          </content>
+      </Tab>
+      <Tab fx:id="NutritionsValues" onSelectionChanged="#setOnButtonIndhold" text="Nutritionvalues">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <VBox prefHeight="53.0" prefWidth="729.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nutritionvalues" translateX="250.0">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Text>
+                        <ButtonBar prefHeight="40.0" prefWidth="700.0">
+                          <buttons>
+                            <Button fx:id="nutritionBurger" minWidth="73.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" text="Burger" />
+                              <Button fx:id="nutritionSoup" mnemonicParsing="false" text="Soup" />
+                              <Button fx:id="nutritionLasagna" mnemonicParsing="false" text="Lasagna" />
+                              <Button fx:id="nutritionRice" mnemonicParsing="false" text="Rice" />
+                              <Button fx:id="nutritionSteak" mnemonicParsing="false" text="Steak" />
+                              <Button fx:id="nutritionChicken" mnemonicParsing="false" text="Chicken" />
+                          </buttons>
+                        </ButtonBar>
+                     </children>
+                  </VBox>
+                  <VBox layoutY="66.0" prefHeight="341.0" prefWidth="729.0">
+                     <children>
+                        <TextArea fx:id="nutritionValues" editable="false" prefHeight="340.0" prefWidth="729.0">
+                           <font>
+                              <Font size="50.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+        </content>
       </Tab>
   </tabs>
 </TabPane>
