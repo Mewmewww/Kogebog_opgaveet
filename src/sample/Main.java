@@ -17,15 +17,13 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Kogebogen!");
         primaryStage.setScene(new Scene(root, 730, 470));
         primaryStage.show();
-        Controller controller = new Controller();
     }
 
 
     public static void main(String[] args) {
-        Controller controller = new Controller();
         launch(args);
 
     }

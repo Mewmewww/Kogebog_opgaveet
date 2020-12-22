@@ -11,10 +11,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Controller extends Calculator {
-    public void setOpskrift(Tab opskrift) {
-        Opskrift = opskrift;
-    }
     //<editor-fold-desc = "FXML-List">
+    @FXML
+    ChoiceBox choiceBox;
     @FXML
     Tab Opskrift;
     @FXML
@@ -85,13 +84,18 @@ public class Controller extends Calculator {
     @FXML
     Button nutritionRice;
     //</editor-fold>
-
+    public void choiceBoxes() {
+        //TODO: Work in progress - most likely won't be done by deadline.
+    }
     public void chickenTransfer() {
+        // Method is called when the button correlated to chicken is pressed.
         FriedChicken.clear();
         TestIngredients.clear();
-        tabPane.getSelectionModel().select(Opskrift);
-        FriedChicken.appendText("Ingredients for a good soup recipe");
+        testTutorial.clear();
 
+        tabPane.getSelectionModel().select(Opskrift);
+        FriedChicken.appendText("Ingredients for a good Chicken recipe");
+        // Instantiated the files I want specifically when chicken is called.
         File file = new File("Chicken.txt");
         File file1 = new File("ChickenTutorial.txt");
         stealCode(file, file1);
@@ -99,6 +103,7 @@ public class Controller extends Calculator {
     }
 
     private void stealCode(File file, File file1) {
+        // Overall method that allows us to rip this method and use it on each individual method above and below.
         try (Scanner input = new Scanner(file)) {
             while (input.hasNextLine()) {
                 TestIngredients.appendText(input.nextLine() + "\n");
@@ -118,10 +123,14 @@ public class Controller extends Calculator {
     }
 
     public void soupTransfer() throws NumberFormatException {
+        // Method is called when the button correlated to Soup is pressed.
         FriedChicken.clear();
         TestIngredients.clear();
+        testTutorial.clear();
+
         tabPane.getSelectionModel().select(Opskrift);
         FriedChicken.appendText("Ingredients for a good soup recipe");
+        // Instantiated the files I want specifically when Soup is called.
 
         File file = new File("Soup.txt");
         File file1 = new File("SoupTutorial.txt");
@@ -131,10 +140,15 @@ public class Controller extends Calculator {
     // TODO: Add an arbitrary recipe/ingredientslist from google at last.
 
     public void steakTransfer() {
+        // Method is called when the button correlated to Steak is pressed.
+
         FriedChicken.clear();
         TestIngredients.clear();
+        testTutorial.clear();
+
         tabPane.getSelectionModel().select(Opskrift);
-        FriedChicken.appendText("Ingredients for a good soup recipe");
+        FriedChicken.appendText("Ingredients for a good Steak recipe");
+        // Instantiated the files I want specifically when Steak is called.
 
         File file = new File("Steak.txt");
         File file1 = new File("SteakTutorial.txt");
@@ -143,35 +157,45 @@ public class Controller extends Calculator {
     // TODO: Add an arbitrary recipe/ingredientslist from google at last.
 
     public void riceTransfer() {
+        // Method is called when the button correlated to Rice is pressed.
+
         FriedChicken.clear();
         TestIngredients.clear();
+        testTutorial.clear();
         tabPane.getSelectionModel().select(Opskrift);
-        FriedChicken.appendText("Ingredients for a good soup recipe");
+        FriedChicken.appendText("Ingredients for a good Rice recipe");
+        // Instantiated the files I want specifically when Rice is called.
 
         File file = new File("Rice.txt");
         File file1 = new File("RiceTutorial.txt");
         stealCode(file, file1);
 
     }
-    // TODO: Add an arbitrary recipe/ingredientslist from google at last.
 
     public void burgerTransfer() {
+        // Method is called when the button correlated to Burger is pressed.
+
         FriedChicken.clear();
         TestIngredients.clear();
+        testTutorial.clear();
         tabPane.getSelectionModel().select(Opskrift);
-        FriedChicken.appendText("Ingredients for a good soup recipe");
+        FriedChicken.appendText("Ingredients for a good Burger recipe");
+        // Instantiated the files I want specifically when Burger is called.
 
         File file = new File("Burger.txt");
         File file1 = new File("BurgerTutorial.txt");
         stealCode(file, file1);
     }
-    // TODO: Add an arbitrary recipe/ingredientslist from google at last.
 
     public void lasagnaTransfer() {
+        // Method is called when the button correlated to Lasagna is pressed.
+
         FriedChicken.clear();
         TestIngredients.clear();
+        testTutorial.clear();
         tabPane.getSelectionModel().select(Opskrift);
-        FriedChicken.appendText("Ingredients for a good soup recipe");
+        FriedChicken.appendText("Ingredients for a good Lasagna recipe");
+        // Instantiated the files I want specifically when Lasagna is called.
 
         File file = new File("Lasagna.txt");
         File file1 = new File("LasagnaTutorial.txt");
@@ -180,6 +204,9 @@ public class Controller extends Calculator {
     }
 
     public void setLogsButtonOnAction() {
+        // When the tab has been pressed, it will instantiate all the buttons included in the pane.
+        // This will allow the program to, once a specific button is pressed - to append the texts of the
+        // textfiles into the textAreas.
         soupSave.setOnAction(e -> {
             try {
                 logs(new File("Soup.txt"), new File("SoupTutorial.txt"));
@@ -238,6 +265,7 @@ public class Controller extends Calculator {
         catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }
+        // Reads the second file.
         try (Scanner soupTutorials = new Scanner(file2)) {
             while (soupTutorials.hasNextLine()) {
                 saveTutorial.appendText(soupTutorials.nextLine() + "\n");
@@ -265,12 +293,12 @@ public class Controller extends Calculator {
                         });
                     }).start();
                     logsSave.appendText("Error: no document-title found");
-                    // Insert platform.run thread to clear both logsSave and the ingredients/tutorial.
                 } catch (NullPointerException e) {
                     e.printStackTrace();
                 }
             } else {
-                logsSave.appendText("File created - shutting down");
+                // All will be saved/created/exited.
+                logsSave.appendText("File created - document is saved on exit.");
                 FileWriter fileWriter = new FileWriter(file, true);
                 BufferedWriter outStream = new BufferedWriter(fileWriter);
                 outStream.append(saveIngredients.getText()).append("\n").append("").append(saveTutorial.getText());
@@ -320,6 +348,8 @@ public class Controller extends Calculator {
         /* Kunne også anvende klassevariabler for at opfylde opgave-kravet, men jeg synes at klassevariabler
         passer ret elendigt ind i min udvalgte kogebog.
         */
+        // Defining specific nutritionvalues in a seperate method, so when the tab is executed -
+        // all these values will be instantiated.
         nutritionBurger.setOnAction(e -> {
             naeringsIndhold(10, 10, 10);
         });
@@ -341,7 +371,10 @@ public class Controller extends Calculator {
     }
 
     public void naeringsIndhold(int Calories, int Salt, int Protein) {
+        // Calling the values here from the above-mentioned method.
         nutritionValues.clear();
         nutritionValues.appendText("Calories: " + Calories + "\nSalt: " + Salt + "\nProtein: " + Protein);
     }
+
+    // TODO: Overall missing features!: Test/Algorithm/Array-ArrayList/Enum.
 }
